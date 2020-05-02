@@ -1,4 +1,4 @@
-// file doesn't used instead of Dockerrun.aws.json is used
+# file doesn't used instead of Dockerrun.aws.json is used
 
 FROM node:11 as builder
 WORKDIR '/app'
