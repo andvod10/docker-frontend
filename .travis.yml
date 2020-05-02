@@ -3,15 +3,15 @@ services:
   - docker
 
 before_install:
-  - docker build -t andvod10/docker-frontend -f Dockerfile.dev .
+  - docker build -t andvod/docker-frontend -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true andvod10/docker-frontend npm run test
+  - docker run -e CI=true andvod/docker-frontend npm run test
 
 after_success:
-  - docker build -f Dockerfile.prod -t andvod/docker-frontend:0.2 .
+  - docker build -f Dockerfile.prod -t andvod/docker-frontend:0.3 .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push andvod/docker-frontend:0.2
+  - docker push andvod/docker-frontend:0.3
 
 deploy:
   provider: elasticbeanstalk
